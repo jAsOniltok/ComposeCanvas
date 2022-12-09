@@ -157,19 +157,19 @@ fun MyFace() {
             color = Color.Black,
             start = Offset(center.x , center.y - 210f),
             end = Offset(center.x, center.y - 210f - 80f),
-            strokeWidth = 3.dp.toPx()
+            strokeWidth = 4.dp.toPx()
         )
         drawLine(
             color = Color.Black,
             start = Offset(center.x - 30f , center.y - 210f),
             end = Offset(center.x  - 30f, center.y - 210f - 80f),
-            strokeWidth = 3.dp.toPx()
+            strokeWidth = 4.dp.toPx()
         )
         drawLine(
             color = Color.Black,
             start = Offset(center.x + 30f , center.y - 210f),
             end = Offset(center.x  + 30f, center.y - 210f - 80f),
-            strokeWidth = 3.dp.toPx()
+            strokeWidth = 4.dp.toPx()
         )
     }
 }
