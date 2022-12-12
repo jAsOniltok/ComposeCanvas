@@ -171,6 +171,7 @@ fun MyFace() {
             end = Offset(center.x  + 30f, center.y - 210f - 80f),
             strokeWidth = 4.dp.toPx()
         )
+
         drawLine(
             color = Color.Black,
             start = Offset(center.x + 60f , center.y - 204f),
