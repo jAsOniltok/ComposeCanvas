@@ -153,7 +153,6 @@ fun MyFace() {
                 width = 3.dp.toPx()
             )
         )
-
         drawLine(
             color = Color.Black,
             start = Offset(center.x , center.y - 210f),
