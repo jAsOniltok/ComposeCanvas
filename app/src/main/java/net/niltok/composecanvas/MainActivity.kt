@@ -5,17 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 
@@ -30,9 +28,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyCanvas() {
-    Canvas(modifier = Modifier
-        .padding(20.dp)
-        .size(300.dp)) {
+    Canvas(
+        modifier = Modifier
+            .padding(20.dp)
+            .size(300.dp)
+    ) {
 
         drawRect(
             color = Color.Black,
@@ -84,12 +84,16 @@ fun MyCanvas() {
 
 @Composable
 fun MyFace() {
-    Canvas(modifier = Modifier
-        .background(color = Color.Yellow)
-        .size(300.dp)) {
-        val noseOffset = Offset(center.x-25f, center.y - 90f)
-        val leftEyeOffset = Offset(center.x/2 + (center.x/4), center.y - 60f)
-        val rightEyeOffset = Offset(center.x + (center.x/4), center.y - 60f)
+    Canvas(
+        modifier = Modifier
+            .background(color = Color.LightGray)
+            .fillMaxSize()
+    ) {
+        val noseOffset = Offset(center.x - 25f, center.y - 90f)
+        val leftEyeOffset = Offset(center.x / 2 + (center.x / 4), center.y - 60f)
+        val rightEyeOffset = Offset(center.x + (center.x / 4), center.y - 60f)
+
+        drawRect(color = Color.Yellow, topLeft = Offset(0f, 0f), size = size)
 
         drawCircle(
             color = Color.Black,
@@ -141,7 +145,6 @@ fun MyFace() {
             topLeft = Offset((leftEyeOffset.x - 37.5f), leftEyeOffset.y - 50f),
             size = Size(80f, 10f)
         )
-        // TODO: useCenter 변경 설명, style Stroke 변경 설명, startAngle 설명, sweepAngle 설명
         drawArc(
             color = Color.Black,
             startAngle = 0f,
@@ -155,20 +158,20 @@ fun MyFace() {
         )
         drawLine(
             color = Color.Black,
-            start = Offset(center.x , center.y - 210f),
+            start = Offset(center.x, center.y - 210f),
             end = Offset(center.x, center.y - 210f - 80f),
             strokeWidth = 4.dp.toPx()
         )
         drawLine(
             color = Color.Black,
-            start = Offset(center.x - 30f , center.y - 210f),
-            end = Offset(center.x  - 30f, center.y - 210f - 80f),
+            start = Offset(center.x - 30f, center.y - 210f),
+            end = Offset(center.x - 30f, center.y - 210f - 80f),
             strokeWidth = 4.dp.toPx()
         )
         drawLine(
             color = Color.Black,
-            start = Offset(center.x + 30f , center.y - 210f),
-            end = Offset(center.x  + 30f, center.y - 210f - 80f),
+            start = Offset(center.x + 30f, center.y - 210f),
+            end = Offset(center.x + 30f, center.y - 210f - 80f),
             strokeWidth = 4.dp.toPx()
         )
     }
