@@ -16,12 +16,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
+import kotlin.math.cos
+import kotlin.math.sin
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyFace()
+            MyCircle()
         }
     }
 }
@@ -174,5 +176,84 @@ fun MyFace() {
             end = Offset(center.x + 30f, center.y - 210f - 80f),
             strokeWidth = 4.dp.toPx()
         )
+    }
+}
+
+@Composable
+fun MyCircle(){
+    Canvas(
+        modifier = Modifier
+            .background(color = Color.LightGray)
+            .fillMaxSize()
+    ) {
+        val 반지름 = 400f
+        val 라디안 = 57f
+
+        drawCircle(
+            brush = Brush.radialGradient(
+                colors = listOf(
+                    Color.Red,
+                    Color.Yellow
+                ),
+                center = center,
+                radius = 20f
+            ),
+            radius = 20f,
+            center = center
+        )
+       /* drawCircle(
+            brush = Brush.radialGradient(
+                colors = listOf(
+                    Color.Red,
+                    Color.Yellow
+                ),
+                center = Offset(center.x + 반지름, center.y),
+                radius = 20f
+            ),
+            radius = 20f,
+            center = Offset(center.x + 반지름, center.y)
+        )*/
+      /*  for(i in 0 .. 반지름.toInt()) {
+            drawCircle(
+                brush = Brush.radialGradient(
+                    colors = listOf(
+                        Color.Red,
+                        Color.Yellow
+                    ),
+                    center = center,
+                    radius = 20f
+                ),
+                radius = 20f,
+                center = Offset(center.x + cos(0f) * i.toFloat(), center.y + sin(0f) * i.toFloat() )
+            )
+        }
+        for(i in 0 .. 반지름.toInt()) {
+            drawCircle(
+                brush = Brush.radialGradient(
+                    colors = listOf(
+                        Color.Red,
+                        Color.Yellow
+                    ),
+                    center = center,
+                    radius = 20f
+                ),
+                radius = 20f,
+                center = Offset(center.x + cos(1f) * i.toFloat(), center.y + sin(1f) * i.toFloat() )
+            )
+        }
+        for(i in 0 .. Math.toDegrees(1.0).toInt()) {
+            drawCircle(
+                brush = Brush.radialGradient(
+                    colors = listOf(
+                        Color.Red,
+                        Color.Yellow
+                    ),
+                    center = center,
+                    radius = 20f
+                ),
+                radius = 20f,
+                center = Offset(center.x + cos(Math.toRadians(i.toDouble()).toFloat()) * 반지름, center.y + sin(Math.toRadians(i.toDouble()).toFloat()) * 반지름 )
+            )
+        }*/
     }
 }
