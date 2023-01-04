@@ -1,6 +1,7 @@
 package net.niltok.composecanvas
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyCircle()
+            MyPentagon()
         }
     }
 }
@@ -219,3 +220,33 @@ fun MyCircle() {
         }
     }
 }
+
+@Composable
+fun MyPentagon() {
+    Canvas(
+        modifier = Modifier
+            .background(color = Color.LightGray)
+            .fillMaxSize()
+    ) {
+        val 반지름 = 400f
+        var step = 0
+
+        for (각도 in 72..360 step 72) {
+            Log.d("drawLine", "start:$step, end:$각도")
+            drawLine(
+                color = Color.Black,
+                start = Offset(
+                    center.x + cos(Math.toRadians(step.toDouble()).toFloat()) * 반지름,
+                    center.y + sin(Math.toRadians(step.toDouble()).toFloat()) * 반지름
+                ),
+                end = Offset(
+                    center.x + cos(Math.toRadians(각도.toDouble()).toFloat()) * 반지름,
+                    center.y + sin(Math.toRadians(각도.toDouble()).toFloat()) * 반지름
+                ),
+                strokeWidth = 3.dp.toPx()
+            )
+            step = 각도
+        }
+    }
+}
+
